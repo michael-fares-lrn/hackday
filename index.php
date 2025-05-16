@@ -6,11 +6,12 @@ use LearnositySdk\Utils\Uuid;
 
 $consumer_key = "yis0TYCu7U9V4o7M";
 $consumer_secret = "74c5fd430cf1242a527f6223aebd42d30464be22";
+$domain = explode(':', $_SERVER['HTTP_HOST'])[0];
 
 $session_id = Uuid::generate();
 $security = [
     'consumer_key' => $consumer_key,
-    'domain'       => "localhost"
+    'domain'       => $domain
 ];
 
 $request = <<<REQ
