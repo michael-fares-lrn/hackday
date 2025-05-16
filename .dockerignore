@@ -1,0 +1,8 @@
+.git
+.gitignore
+.dockerignore
+.vscode/         # Exclude VS Code configuration
+.idea/           # Exclude JetBrains IDE configuration
+*.log            # Exclude log files
+*.tmp            # Exclude temporary files
+.env             # Exclude local environment file

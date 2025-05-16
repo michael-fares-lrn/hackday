@@ -68,7 +68,7 @@ $version = "latest-lts";
     <html>
         <head>
 
-            <title>Items API Test</title>
+            <title>LRN Jeopardy</title>
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap" rel="stylesheet">
@@ -77,7 +77,8 @@ $version = "latest-lts";
             </style>
         </head>
         <body>
-
+            <?php include_once './modal.html'?>
+            <button class="about">About</button>
 
             <header>
                 <div class="text">
@@ -106,6 +107,16 @@ $version = "latest-lts";
             <script src="https://items.learnosity.com?<?=$version?>"></script>
 
             <script type="module">
+                // set up the "about" modal dialog events
+                const dialog = document.querySelector('#about-modal');
+                const aboutBtn = document.querySelector('.about')
+                aboutBtn.addEventListener('click', () => {
+                    dialog.showModal();
+                })
+                dialog.querySelector('.close-btn').addEventListener('click', () => {
+                    dialog.close();
+                })
+
                 // grab the random activity json used in the request on the server-side, to know the categories needed
                 // in order to build the jeopardy board
                 const data = JSON.parse(`<?=$randomJson?>`)

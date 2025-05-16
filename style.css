@@ -18,6 +18,7 @@
     --logo-bg-yellow: #F5FF3B;
     --logo-bg-gradient: linear-gradient(180deg, rgba(245, 255, 59, 1) 0%, rgb(182, 186, 116) 60%, rgb(97, 58, 58) 100%);
 }
+
 .lrn-region.lrn-right-region {
     display: none !important;
 }
@@ -167,4 +168,88 @@ button {
 
 .lrn_btn.lrn_validate {
     width: 100%;
+}
+
+/* CSS for dialog */
+
+button.about {
+    font-size: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: var(--yellow);
+    color: var(--blue);
+}
+
+/* Open state of the dialog  */
+dialog:open {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  
+  
+  /* Before open state  */
+  /* Needs to be after the previous dialog:open rule to take effect,
+      as the specificity is the same */
+  @starting-style {
+    dialog:open {
+      opacity: 0;
+    }
+  }
+  
+  /* Transition the :backdrop when the dialog modal is promoted to the top layer */
+  dialog::backdrop {
+    background-color: rgb(0 0 0 / 0%);
+    transition:
+      display 0.7s allow-discrete,
+      overlay 0.7s allow-discrete,
+      background-color 0.7s;
+    /* Equivalent to
+    transition: all 0.7s allow-discrete; */
+  }
+  
+  dialog:open::backdrop {
+    background-color: rgb(0 0 0 / 60%);
+  }
+  
+  /* This starting-style rule cannot be nested inside the above selector
+  because the nesting selector cannot represent pseudo-elements. */
+  
+  @starting-style {
+    dialog:open::backdrop {
+      background-color: rgb(0 0 0 / 0%);
+    }
+  }
+dialog {
+    opacity: 0;
+    transform: scaleY(0);
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.7s ease-out,
+      overlay 0.7s ease-out allow-discrete,
+      display 0.7s ease-out allow-discrete;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1rem;
+    p {
+        font-size: unset;
+    }
+    button {
+        cursor: pointer;
+        border: none;
+        background-color: inherit;
+        color: var(--red);
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 3rem;
+        padding: 1rem;
+        &::before {
+            content: "\00d7";
+        }
+    }
 }
