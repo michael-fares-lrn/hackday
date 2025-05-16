@@ -222,6 +222,7 @@ dialog:open {
     }
   }
 dialog {
+    text-align: center;
     opacity: 0;
     transform: scaleY(0);
     transition:
